@@ -4,14 +4,14 @@ extern "C"
 	#include "PauseCPU.h"
 	#include "Util.h"
 	#include "Dpc.h"
-
+	#include "Network.h"
 	//-----------------------------------------------------------------------------------------
 	VOID DriverUnload(
 			_In_ struct _DRIVER_OBJECT *DriverObject
 		)
 	{
 		UNREFERENCED_PARAMETER(DriverObject);
-		UninitDpcStructure();
+	//	UninitDpcStructure();
 		COMMON_DEBUG_INFO("Unloaded Driver");
 	}
 
@@ -41,12 +41,15 @@ extern "C"
 		UNREFERENCED_PARAMETER(unicode);
 	 
 		driver_object->DriverUnload = DriverUnload;
-
+		/*
+		
 		COMMON_DBG_BREAK(); 
 		InitSyncProcedure(TestDemo); 
 
 		InitDpcStructure();
-
+		
+		*/
+		GetPciInfoTest();
 		return status;
 	} 
 }
